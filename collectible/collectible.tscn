@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dil0o4hddiwlo"]
+
+[ext_resource type="Script" path="res://collectible/collectible.gd" id="1_jn4p4"]
+[ext_resource type="Texture2D" uid="uid://cfql4qnftqi4q" path="res://icon.png" id="1_yx51y"]
+[ext_resource type="Resource" uid="uid://crlt7t5vhe5wr" path="res://game_data.tres" id="2_y2pqj"]
+[ext_resource type="AudioStream" uid="uid://syj8ohtaverf" path="res://collectible/tone1.ogg" id="3_r2n4b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_js6fw"]
+size = Vector2(128, 128)
+
+[node name="Collectible" type="Node2D"]
+position = Vector2(704, 192)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_jn4p4")
+game_data = ExtResource("2_y2pqj")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(1, 0.0941176, 0.172549, 1)
+light_mask = 3
+texture = ExtResource("1_yx51y")
+
+[node name="Area2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_js6fw")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_r2n4b")
+max_distance = 1000.0
+attenuation = 2.54912
+max_polyphony = 999
+bus = &"SFX"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
