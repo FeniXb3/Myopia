@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="GameData" load_steps=2 format=3 uid="uid://crlt7t5vhe5wr"]
-
-[ext_resource type="Script" path="res://game_data.gd" id="1_f2nmg"]
-
-[resource]
-script = ExtResource("1_f2nmg")
-step = 64
-delay = 0.12

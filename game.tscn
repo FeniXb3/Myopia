@@ -18,6 +18,7 @@ fill_to = Vector2(0.981651, 0.986748)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wnt4n")
+collectible_scene = ExtResource("2_l6ejt")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1920.0
