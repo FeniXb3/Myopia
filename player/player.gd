@@ -6,7 +6,8 @@ extends Node2D
 var current_direction := Vector2.RIGHT
 var next_direction := Vector2.RIGHT
 var move_tween : Tween
-@onready var sprite_2d = $Sprite2D
+@onready var head = %Head
+
 @export var grid_size := Vector2(1920, 1080)
 @onready var area_2d = %Area2D
 @onready var collected_audio_steam_player = $CollectedAudioSteamPlayer

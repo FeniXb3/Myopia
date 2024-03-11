@@ -1,17 +1,16 @@
 [gd_scene load_steps=8 format=3 uid="uid://dil0o4hddiwlo"]
 
 [ext_resource type="Script" path="res://collectible/collectible.gd" id="1_jn4p4"]
-[ext_resource type="Texture2D" uid="uid://cfql4qnftqi4q" path="res://icon.png" id="1_yx51y"]
 [ext_resource type="Resource" uid="uid://bd1fgadi66e7" path="res://variable_resources/player_position.tres" id="2_ar2oy"]
 [ext_resource type="AudioStream" uid="uid://syj8ohtaverf" path="res://collectible/tone1.ogg" id="3_r2n4b"]
 [ext_resource type="Resource" uid="uid://ci8k5cul1qghj" path="res://variable_resources/step.tres" id="3_uo1lq"]
 [ext_resource type="Resource" uid="uid://c5eoj1iyq2kc1" path="res://variable_resources/delay.tres" id="4_ewmvl"]
+[ext_resource type="Texture2D" uid="uid://1mpuy8x0rrh7" path="res://collectible/green_body_square.png" id="5_pxbn1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_js6fw"]
-size = Vector2(128, 128)
+size = Vector2(80, 80)
 
 [node name="Collectible" type="Node2D"]
-position = Vector2(704, 192)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_jn4p4")
 player_position = ExtResource("2_ar2oy")
@@ -19,9 +18,8 @@ step = ExtResource("3_uo1lq")
 delay = ExtResource("4_ewmvl")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-modulate = Color(1, 0.0941176, 0.172549, 1)
 light_mask = 3
-texture = ExtResource("1_yx51y")
+texture = ExtResource("5_pxbn1")
 
 [node name="Area2D" type="Area2D" parent="."]
 unique_name_in_owner = true

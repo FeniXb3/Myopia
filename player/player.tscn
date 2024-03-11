@@ -2,25 +2,25 @@
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_s5fx7"]
 [ext_resource type="Resource" uid="uid://ci8k5cul1qghj" path="res://variable_resources/step.tres" id="2_p1wwa"]
-[ext_resource type="Texture2D" uid="uid://cfql4qnftqi4q" path="res://icon.png" id="2_sml2w"]
 [ext_resource type="Resource" uid="uid://c5eoj1iyq2kc1" path="res://variable_resources/delay.tres" id="3_0b8w2"]
 [ext_resource type="Texture2D" uid="uid://7163f7jtlhbv" path="res://player/light_sprite.png" id="3_dtwqp"]
 [ext_resource type="Resource" uid="uid://bd1fgadi66e7" path="res://variable_resources/player_position.tres" id="4_swuib"]
+[ext_resource type="Texture2D" uid="uid://cnfy20kvhaxc7" path="res://player/body_parts/purple_body_circle.png" id="5_ob4bu"]
 [ext_resource type="AudioStream" uid="uid://rninidtcdelk" path="res://collectible/powerUp4.ogg" id="7_wrwu3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xywwl"]
-size = Vector2(128, 128)
+size = Vector2(80, 80)
 
 [node name="Player" type="Node2D"]
-position = Vector2(267, 304)
 script = ExtResource("1_s5fx7")
 step = ExtResource("2_p1wwa")
 delay = ExtResource("3_0b8w2")
 player_position = ExtResource("4_swuib")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Head" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 rotation = 1.5708
-texture = ExtResource("2_sml2w")
+texture = ExtResource("5_ob4bu")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture = ExtResource("3_dtwqp")
