@@ -44,12 +44,15 @@ func move() -> void:
 		current_direction = next_direction
 		rotate(angle_radians)
 	
-	position += current_direction * step.value
-	position.x = fposmod(position.x, grid_size.x)
-	position.y = fposmod(position.y, grid_size.y)
+	var tmp_position = position;
 	
-	position.snapped(Vector2(step.value, step.value)) + Vector2(step.value / 2, step.value / 2)
-	player_position.value = position
+	tmp_position += current_direction * step.value
+	tmp_position.x = fposmod(tmp_position.x, grid_size.x)
+	tmp_position.y = fposmod(tmp_position.y, grid_size.y)
+	
+	tmp_position = tmp_position.snapped(Vector2(step.value, step.value))
+	player_position.value = tmp_position
+	position = player_position.value
 
 func _on_delay_changed(value : float) -> void:
 	if is_node_ready():

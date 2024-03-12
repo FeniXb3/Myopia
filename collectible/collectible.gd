@@ -13,7 +13,7 @@ func _ready():
 	setup_tone_tween()
 	position.x = randi_range(0, 1920)
 	position.y = randi_range(0, 1024)
-	position.snapped(Vector2(step.value, step.value)) + Vector2(step.value / 2, step.value / 2)
+	position = position.snapped(Vector2(step.value, step.value))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
