@@ -3,6 +3,7 @@ extends Node2D
 @export var step : IntVariable
 @export var delay : FloatVariable
 @export var player_position : Vector2Variable
+@export var tween_movement : BoolVariable
 var current_direction := Vector2.RIGHT
 var next_direction := Vector2.RIGHT
 var move_tween : Tween
@@ -23,9 +24,15 @@ func _ready():
 func setup_move_tween() -> void:
 	if move_tween:
 		move_tween.kill()
-	move_tween = create_tween().set_loops()
-	move_tween.tween_callback(move).set_delay(delay.value)
-	#pass
+		
+	if tween_movement.value:
+		move_tween = create_tween()
+		move_tween.tween_property(self, "position", player_position.value, delay.value).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CIRC)
+		move_tween.tween_callback(move)
+	else:
+		move_tween = create_tween().set_loops()
+		move_tween.tween_callback(move).set_delay(delay.value)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -52,7 +59,11 @@ func move() -> void:
 	
 	tmp_position = tmp_position.snapped(Vector2(step.value, step.value))
 	player_position.value = tmp_position
-	position = player_position.value
+	
+	if tween_movement.value:
+		setup_move_tween()
+	else:
+		position = player_position.value
 
 func _on_delay_changed(value : float) -> void:
 	if is_node_ready():
