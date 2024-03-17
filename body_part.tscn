@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0sht8mmbkkud"]
+
+[ext_resource type="Texture2D" uid="uid://btig8oco2in55" path="res://player/body_parts/purple_body_squircle.png" id="1_oot2d"]
+
+[node name="BodyPart" type="Sprite2D"]
+texture = ExtResource("1_oot2d")
