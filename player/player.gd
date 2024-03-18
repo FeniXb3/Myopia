@@ -4,6 +4,7 @@ extends Node2D
 @export var delay : FloatVariable
 @export var player_position : Vector2Variable
 @export var tween_movement : BoolVariable
+@export var part_scene : PackedScene
 var current_direction := Vector2.RIGHT
 var next_direction := Vector2.RIGHT
 var move_tween : Tween
@@ -95,3 +96,8 @@ func _on_collectible_entered(area: Area2D):
 		
 	collected_audio_steam_player.play()
 	print("Collected!")
+	var new_part = part_scene.instantiate()
+	var last_element = body_parts[-1] if body_parts.size() > 0 else head
+	new_part.position = last_element.position
+	body_parts.append(new_part)
+	body_container.add_child(new_part)

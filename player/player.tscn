@@ -38,6 +38,7 @@ step = ExtResource("2_p1wwa")
 delay = ExtResource("3_0b8w2")
 player_position = ExtResource("4_swuib")
 tween_movement = ExtResource("5_obek4")
+part_scene = ExtResource("11_knj08")
 
 [node name="Head" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -72,17 +73,5 @@ texture = ExtResource("3_dtwqp")
 
 [node name="BodyContainer" type="Node2D" parent="."]
 unique_name_in_owner = true
-
-[node name="BodyPart" parent="BodyContainer" instance=ExtResource("11_knj08")]
-position = Vector2(-80, 0)
-rotation = 1.5708
-
-[node name="BodyPart2" parent="BodyContainer" instance=ExtResource("11_knj08")]
-position = Vector2(-160, 0)
-rotation = 1.5708
-
-[node name="BodyPart3" parent="BodyContainer" instance=ExtResource("11_knj08")]
-position = Vector2(-240, 0)
-rotation = 1.5708
 
 [connection signal="area_entered" from="Head/Area2D" to="." method="_on_area_2d_area_entered"]
