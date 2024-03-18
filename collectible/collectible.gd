@@ -31,9 +31,9 @@ func play_tone():
 	var max_pitch := 1.9
 	var pitch_max_distance := 0.9
 	
+	# Is messed up if player's scale is not 1
 	var y_difference := clampf((player_position.value.y - position.y) / step.value, -9, 9)
 	audio_stream_player_2d.pitch_scale = 1 + y_difference/10
-	print(audio_stream_player_2d.pitch_scale)
 	audio_stream_player_2d.play()
 
 func _on_area_2d_area_entered(area):
