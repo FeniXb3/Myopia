@@ -16,6 +16,8 @@ var body_parts : Array = Array()
 @onready var area_2d = %Area2D
 @onready var collected_audio_steam_player = %CollectedAudioSteamPlayer
 @onready var front_area = %FrontArea
+@onready var audio_listener_2d = %AudioListener2D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -74,6 +76,7 @@ func move() -> void:
 	
 	tmp_position = tmp_position.snapped(Vector2(step.value, step.value))
 	player_position.value = tmp_position
+	audio_listener_2d.position = player_position.value
 	
 	if tween_movement.value:
 		setup_move_tween()

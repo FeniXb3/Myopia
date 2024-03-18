@@ -42,6 +42,10 @@ player_position = ExtResource("4_swuib")
 tween_movement = ExtResource("5_obek4")
 part_scene = ExtResource("11_knj08")
 
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+unique_name_in_owner = true
+current = true
+
 [node name="Head" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 rotation = 1.5708
@@ -59,10 +63,6 @@ rotation = -1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Head/Area2D"]
 shape = SubResource("RectangleShape2D_xywwl")
-
-[node name="AudioListener2D" type="AudioListener2D" parent="Head"]
-rotation = -1.5708
-current = true
 
 [node name="CollectedAudioSteamPlayer" type="AudioStreamPlayer2D" parent="Head"]
 unique_name_in_owner = true
