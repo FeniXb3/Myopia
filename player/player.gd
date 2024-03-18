@@ -15,6 +15,7 @@ var body_parts : Array = Array()
 @export var grid_size := Vector2(1920, 1080)
 @onready var area_2d = %Area2D
 @onready var collected_audio_steam_player = %CollectedAudioSteamPlayer
+@onready var front_area = %FrontArea
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,6 +23,7 @@ func _ready():
 	delay.value_changed.connect(_on_delay_changed)
 	tween_movement.value_changed.connect(_on_tween_movement_changed)
 	SignalBus.collectible_entered.connect(_on_collectible_entered)
+	SignalBus.body_collided.connect(_on_body_collided)
 	setup_move_tween()
 	for part in body_container.get_children():
 		body_parts.append(part)
@@ -76,9 +78,10 @@ func move() -> void:
 	if tween_movement.value:
 		setup_move_tween()
 	else:
-		var last_part : Sprite2D = body_parts.pop_back()
-		last_part.position = head.position
-		body_parts.insert(0, last_part)
+		if not body_parts.is_empty():
+			var last_part : Sprite2D = body_parts.pop_back()
+			last_part.position = head.position
+			body_parts.insert(0, last_part)
 		head.position = player_position.value
 		#position = player_position.value
 
@@ -100,4 +103,10 @@ func _on_collectible_entered(area: Area2D):
 	var last_element = body_parts[-1] if body_parts.size() > 0 else head
 	new_part.position = last_element.position
 	body_parts.append(new_part)
-	body_container.add_child(new_part)
+	body_container.call_deferred("add_child", new_part)
+
+func _on_body_collided(area: Area2D) -> void:
+	if area != front_area:
+		return
+		
+	SignalBus.game_over.emit()

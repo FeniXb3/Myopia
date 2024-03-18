@@ -70,6 +70,6 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 100
-text = "You won!"
+text = "Game OVER"
 horizontal_alignment = 1
 vertical_alignment = 1

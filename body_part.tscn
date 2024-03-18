@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0sht8mmbkkud"]
+[gd_scene load_steps=5 format=3 uid="uid://b0sht8mmbkkud"]
 
 [ext_resource type="Texture2D" uid="uid://btig8oco2in55" path="res://player/body_parts/purple_body_squircle.png" id="1_oot2d"]
+[ext_resource type="Script" path="res://player/body_part.gd" id="2_6rd8h"]
+[ext_resource type="Resource" uid="uid://c5eoj1iyq2kc1" path="res://variable_resources/delay.tres" id="3_jsnpg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oaior"]
+size = Vector2(80, 80)
 
 [node name="BodyPart" type="Sprite2D"]
 texture = ExtResource("1_oot2d")
+script = ExtResource("2_6rd8h")
+delay = ExtResource("3_jsnpg")
+
+[node name="Area2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_oaior")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
