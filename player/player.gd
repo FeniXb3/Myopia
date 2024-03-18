@@ -19,6 +19,7 @@ var body_parts : Array = Array()
 func _ready():
 	player_position.value = head.position
 	delay.value_changed.connect(_on_delay_changed)
+	tween_movement.value_changed.connect(_on_tween_movement_changed)
 	SignalBus.collectible_entered.connect(_on_collectible_entered)
 	setup_move_tween()
 	for part in body_container.get_children():
@@ -81,6 +82,10 @@ func move() -> void:
 		#position = player_position.value
 
 func _on_delay_changed(value : float) -> void:
+	if is_node_ready():
+		setup_move_tween()
+
+func _on_tween_movement_changed(value : bool) -> void:
 	if is_node_ready():
 		setup_move_tween()
 
