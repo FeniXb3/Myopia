@@ -26,10 +26,8 @@ offset_bottom = 1024.0
 texture = SubResource("GradientTexture2D_5edug")
 
 [node name="Collectible" parent="." instance=ExtResource("2_l6ejt")]
-position = Vector2(704, 320)
 
 [node name="Player" parent="." instance=ExtResource("1_qw7ch")]
-position = Vector2(64, 192)
 scale = Vector2(0.5, 0.5)
 grid_size = Vector2(1920, 1024)
 
