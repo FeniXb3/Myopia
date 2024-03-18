@@ -94,7 +94,7 @@ func _on_tween_movement_changed(value : bool) -> void:
 		setup_move_tween()
 
 func _on_collectible_entered(area: Area2D):
-	if area != area_2d:
+	if area != front_area:
 		return
 		
 	collected_audio_steam_player.play()
