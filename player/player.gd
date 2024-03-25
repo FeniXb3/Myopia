@@ -3,6 +3,7 @@ extends Node2D
 @export var step : IntVariable
 @export var delay : FloatVariable
 @export var player_position : Vector2Variable
+@export var player_direction : Vector2Variable
 @export var tween_movement : BoolVariable
 @export var part_scene : PackedScene
 var current_direction := Vector2.RIGHT
@@ -66,6 +67,7 @@ func move() -> void:
 	if next_direction != current_direction and  current_direction.dot(next_direction) != -1:
 		var angle_radians := current_direction.angle_to(next_direction)
 		current_direction = next_direction
+		player_direction.value = current_direction
 		head.rotate(angle_radians)
 	
 	var tmp_position = head.position;
